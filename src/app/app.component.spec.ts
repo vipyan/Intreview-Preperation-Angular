@@ -1,5 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
@@ -10,11 +10,12 @@ describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
         TranslateModule.forRoot()
       ],
       declarations: [AppComponent],
-      providers: []
+      providers: [
+        provideRouter([])
+      ]
     }).compileComponents();
   }));
 

@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,20 +11,13 @@ import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
 
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RouterModule,
-    TranslateModule.forRoot(),
-    NgbModule,
-    ShellModule,
-    HomeModule,
-    AppRoutingModule, // must be imported as the last module as it contains the fallback route
-  ],
-  declarations: [AppComponent],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        FormsModule,
+        RouterModule,
+        TranslateModule.forRoot(),
+        NgbModule,
+        ShellModule,
+        HomeModule,
+        AppRoutingModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

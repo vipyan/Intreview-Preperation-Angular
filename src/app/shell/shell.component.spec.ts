@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,8 +17,10 @@ describe('ShellComponent', () => {
       imports: [
         TranslateModule.forRoot(),
         I18nModule,
-        NgbModule,
-        RouterTestingModule
+        NgbModule
+      ],
+      providers: [
+        provideRouter([])
       ],
       declarations: [
         HeaderComponent,
