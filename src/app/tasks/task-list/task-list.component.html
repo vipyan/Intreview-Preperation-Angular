@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Tasks</h2>
+
+  <app-task-form (taskCreated)="loadTasks()"></app-task-form>
+
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="!isLoading && tasks.length === 0" class="text-muted text-center py-4">
+    No tasks yet. Add one above!
+  </div>
+
+  <ul *ngIf="!isLoading && tasks.length > 0" class="list-group">
+    <li
+      *ngFor="let task of tasks"
+      class="list-group-item d-flex align-items-start gap-3"
+      [class.list-group-item-secondary]="task.completed"
+    >
+      <input
+        type="checkbox"
+        class="form-check-input mt-1 flex-shrink-0"
+        [checked]="task.completed"
+        (change)="toggleTask(task)"
+      />
+      <div class="flex-grow-1">
+        <div class="fw-semibold" [class.text-decoration-line-through]="task.completed">
+          {{ task.title }}
+        </div>
+        <div *ngIf="task.description" class="text-muted small">{{ task.description }}</div>
+      </div>
+      <button class="btn btn-sm btn-outline-danger flex-shrink-0" (click)="deleteTask(task.id)">
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>

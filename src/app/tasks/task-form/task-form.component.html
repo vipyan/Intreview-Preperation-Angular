@@ -1,0 +1,35 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0">Add New Task</h5>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()">
+      <div class="mb-3">
+        <label for="taskTitle" class="form-label">Title <span class="text-danger">*</span></label>
+        <input
+          id="taskTitle"
+          type="text"
+          class="form-control"
+          [(ngModel)]="title"
+          name="title"
+          placeholder="Enter task title"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="taskDescription" class="form-label">Description</label>
+        <textarea
+          id="taskDescription"
+          class="form-control"
+          [(ngModel)]="description"
+          name="description"
+          rows="3"
+          placeholder="Enter task description (optional)"
+        ></textarea>
+      </div>
+      <div *ngIf="error" class="alert alert-danger py-2">{{ error }}</div>
+      <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Adding...' : 'Add Task' }}
+      </button>
+    </form>
+  </div>
+</div>

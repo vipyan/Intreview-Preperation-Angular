@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
+import { TasksModule } from './tasks/tasks.module';
 
 
 @NgModule({ declarations: [AppComponent],
@@ -19,5 +20,6 @@ import { ShellModule } from './shell/shell.module';
         NgbModule,
         ShellModule,
         HomeModule,
+        TasksModule,
         AppRoutingModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
